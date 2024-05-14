@@ -36,3 +36,28 @@ CREATE TABLE Salaries (
     PaymentDate DATE,
     FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
 );
+
+CREATE TABLE ATM (
+    ATMID INT AUTO_INCREMENT PRIMARY KEY,
+    Location VARCHAR(255),
+    Status ENUM('Active', 'Inactive')
+);
+
+CREATE TABLE Transactions (
+    TransactionID INT AUTO_INCREMENT PRIMARY KEY,
+    AccountID INT,
+    TransactionType VARCHAR(50),
+    Amount DECIMAL(15, 2),
+    TransactionDate TIMESTAMP,
+    FOREIGN KEY (AccountID) REFERENCES Accounts(AccountID)
+);
+
+CREATE TABLE Loans (
+    LoanID INT AUTO_INCREMENT PRIMARY KEY,
+    AccountID INT,
+    Amount DECIMAL(15, 2),
+    InterestRate DECIMAL(5, 2),
+    StartDate DATE,
+    EndDate DATE,
+    FOREIGN KEY (AccountID) REFERENCES Accounts(AccountID)
+);

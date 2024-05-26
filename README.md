@@ -1,6 +1,6 @@
 # Banking Management System - DBS Project
 ## Group Members:
-- Muhammad Hussain (Leader)
+- Muhammad Hussain
 - Muhammad Taimoor
 - Sohaib Ahmed
 

@@ -1,0 +1,13 @@
+CREATE TABLE Customers (
+    CustomerID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(50),
+    Address VARCHAR(100),
+    Phone VARCHAR(20),
+    Email VARCHAR(50)
+);
+
+INSERT INTO Customers (Name, Address, Phone, Email)
+VALUES 
+('Haleema Sultan', 'Defence Phase 8', '03003512478', 'Haleema@gmail.com'),
+('Imran khan', 'Bani Gala', '03162547891', 'Khan@gmail.com'),
+('Hafsa', 'Commander City', '03156214793', 'Hafsa@gmail.com');

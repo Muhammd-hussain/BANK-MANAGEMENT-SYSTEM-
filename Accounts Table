@@ -1,0 +1,14 @@
+CREATE TABLE Accounts (
+    AccountID INT AUTO_INCREMENT PRIMARY KEY,
+    CustomerID INT,
+    AccountType VARCHAR(50),
+    Balance DECIMAL(15, 2),
+    OpenDate DATE,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+INSERT INTO Accounts (CustomerID, AccountType, Balance, OpenDate)
+VALUES 
+((SELECT CustomerID FROM Customers WHERE Name = 'Haleema Sultan' LIMIT 1), 'Savings', 10000.00, '2023-07-15'),
+((SELECT CustomerID FROM Customers WHERE Name = 'Imran Khan' LIMIT 1), 'Checking', 5000.00, '2024-03-7'),
+((SELECT CustomerID FROM Customers WHERE Name = 'Hafsa' LIMIT 1), 'Current', 5000.00, '2021-04-09');

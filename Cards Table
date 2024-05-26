@@ -1,0 +1,13 @@
+CREATE TABLE Cards (
+    CardID INT AUTO_INCREMENT PRIMARY KEY,
+    AccountID INT,
+    CardType VARCHAR(50),
+    ExpiryDate DATE,
+    FOREIGN KEY (AccountID) REFERENCES Accounts(AccountID)
+);
+
+INSERT INTO Cards (AccountID, CardType, ExpiryDate)
+VALUES 
+((SELECT AccountID FROM Accounts WHERE CustomerID = (SELECT CustomerID FROM Customers WHERE NAME AND Email = 'Haleema Sultan' 'Haleema@gmail.com' LIMIT 1)), 'Debit', '2026-01-01'),
+((SELECT AccountID FROM Accounts WHERE CustomerID = (SELECT CustomerID FROM Customers WHERE NAME AND Email = 'Imran Khan' 'Khan@gmail.com' LIMIT 1)), 'Credit', '2026-02-01'),
+((SELECT AccountID FROM Accounts WHERE CustomerID = (SELECT CustomerID FROM Customers WHERE NAME AND Email = 'Hafsa' 'Hafsa@gmail.com' LIMIT 1)), 'Debit' , '2026-02-01');

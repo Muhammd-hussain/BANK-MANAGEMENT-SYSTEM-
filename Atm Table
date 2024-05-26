@@ -1,0 +1,14 @@
+CREATE TABLE ATM (
+    ATMID INT AUTO_INCREMENT PRIMARY KEY,
+    Location VARCHAR(50),
+    Status ENUM('Active', 'Inactive')
+);
+
+INSERT INTO ATM (Location, Status)
+VALUES 
+('Malir,Krachi', 'InActive'),
+('Defence,Karachi', 'active'),
+('Defence,Lahore', 'Inactive'),
+('Bahria Town,Karachi', 'active'),
+('Main street,Islamabad', 'active'),
+('Korangi,Karachi', 'Inactive');

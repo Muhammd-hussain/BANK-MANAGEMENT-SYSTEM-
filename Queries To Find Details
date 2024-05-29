@@ -14,14 +14,12 @@ JOIN Employees e ON b.BranchID = e.BranchID
 JOIN Accounts a ON e.EmployeeID = b.ManagerID
 WHERE b.Location = 'Lahore';
 
-
 -- querry to find employee working in dept
 
 SELECT e.Name, e.Position, d.DepartmentName
 FROM Employees e
 JOIN Departments d ON e.DeptID = d.DepartmentID
 WHERE d.DepartmentName = 'HR';
-
 
 -- query to list all customer account with their respective accounts balance and loan amount 
 
@@ -30,15 +28,50 @@ FROM Customers c
 JOIN Accounts a ON c.CustomerID = a.CustomerID
 LEFT JOIN Loans l ON a.AccountID = l.AccountID;
 
-
 -- query to find all active & inactive branches in city
 
 SELECT a.ATMID, a.Location
 FROM ATM a
-WHERE a.Status = 'InActive' AND a.Location LIKE '%Karachi%';
+WHERE a.Status = 'InActive' AND a.Location LIKE '%pindi%';
 
 SELECT a.ATMID, a.Location
 FROM ATM a
 WHERE a.Status = 'Active' AND a.Location LIKE '%Karachi%';
 
+-- query to list all employee along with their dept, name, branchlocation, and salary 
+
+SELECT e.Name AS EmployeeName, e.Position, d.DepartmentName, b.Location AS BranchLocation, e.Salary
+FROM Employees e 
+JOIN Departments d ON e.DeptID = d.DepartmentID
+JOIN Branches b ON e.BranchID = b.BranchID;
+
+-- query to find total salary expenditure per dept 
+
+SELECT d.DepartmentName, SUM(e.Salary) AS TotalSalaryExpenditure
+FROM Employees e
+JOIN Departments d ON e.DeptID = d.DepartmentID
+GROUP BY d.DepartmentName;
+
+-- query to find customers with more than one account 
+ 
+SELECT c.Name, COUNT(a.AccountID) AS NumberOfAccounts
+FROM Customers c
+JOIN Accounts a ON c.CustomerID = a.CustomerID
+GROUP BY c.Name
+HAVING COUNT(a.AccountID) > 1;
+
+-- query to find customer with more tahn one account with total balance 
+
+SELECT c.Name, COUNT(a.AccountID) AS NumberOfAccounts, SUM(a.Balance) AS totalBalance
+FROM Customers c
+JOIN Accounts a ON c.CustomerID = a.CustomerID
+GROUP BY c.Name
+HAVING COUNT(a.AccountID) > 1;
+
+-- query to find all customers who have taken loan
+
+SELECT DISTINCT c.Name AS CustomerName, c.Email, l.Amount AS LoanAmount
+FROM Customers c
+JOIN Accounts a ON c.CustomerID = a.CustomerID
+JOIN Loans l ON a.AccountID = l.AccountID;
 

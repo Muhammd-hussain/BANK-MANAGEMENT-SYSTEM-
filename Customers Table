@@ -3,7 +3,7 @@ CREATE TABLE Customers (
     Name VARCHAR(50),
     Address VARCHAR(100),
     Phone VARCHAR(20),
-    Email VARCHAR(50)
+    Email VARCHAR(50) UNIQUE
 );
 
 INSERT INTO Customers (Name, Address, Phone, Email)

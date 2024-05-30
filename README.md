@@ -19,3 +19,8 @@
 ## Transactions:
 - Logs all transactions, including deposits, withdrawals, and transfers
 
+  ## ER MODEL
+
+  
+![](https://github.com/Muhammd-hussain/BANK-MANAGEMENT-SYSTEM-/assets/163119384/d66b595b-b9a9-4c53-9253-96c0c41cb9cb)
+

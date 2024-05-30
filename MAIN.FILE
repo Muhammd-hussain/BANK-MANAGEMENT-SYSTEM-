@@ -97,21 +97,6 @@ VALUES
 ((SELECT CustomerID FROM Customers WHERE Name = 'Hafsa' LIMIT 1), 'Current', 5000.00, '2021-04-09');
 Select * From bank_management_system.Accounts;
 
-CREATE TABLE Cards (
-    CardID INT AUTO_INCREMENT PRIMARY KEY,
-    AccountID INT,
-    CardType VARCHAR(50),
-    ExpiryDate DATE,
-    FOREIGN KEY (AccountID) REFERENCES Accounts(AccountID)
-);
-
-INSERT INTO Cards (AccountID, CardType, ExpiryDate)
-VALUES 
-((SELECT AccountID FROM Accounts WHERE CustomerID = (SELECT CustomerID FROM Customers WHERE NAME AND Email = 'Haleema Sultan' 'Haleema@gmail.com' LIMIT 1)), 'Debit', '2026-01-01'),
-((SELECT AccountID FROM Accounts WHERE CustomerID = (SELECT CustomerID FROM Customers WHERE NAME AND Email = 'Imran Khan' 'Khan@gmail.com' LIMIT 1)), 'Credit', '2026-02-01'),
-((SELECT AccountID FROM Accounts WHERE CustomerID = (SELECT CustomerID FROM Customers WHERE NAME AND Email = 'Hafsa' 'Hafsa@gmail.com' LIMIT 1)), 'Debit' , '2026-02-01');
-
-SELECT * FROM cards;
 
  CREATE TABLE ATM (
     ATMID INT AUTO_INCREMENT PRIMARY KEY,
@@ -127,6 +112,24 @@ VALUES
 ('Bahria Town,Karachi', 'active'),
 ('Main street,Islamabad', 'active'),
 ('Korangi,Karachi', 'Inactive');
+
+CREATE TABLE Cards (
+    CardID INT AUTO_INCREMENT PRIMARY KEY,
+    AccountID INT,
+    CardType VARCHAR(50),
+    ExpiryDate DATE,
+    FOREIGN KEY (AccountID) REFERENCES Accounts(AccountID),
+    FOREIGN KEY (ATMID) REFERENCES ATM(ATMID)
+);
+
+INSERT INTO Cards (AccountID, CardType, ExpiryDate)
+VALUES 
+((SELECT AccountID FROM Accounts WHERE CustomerID = (SELECT CustomerID FROM Customers WHERE NAME AND Email = 'Haleema Sultan' 'Haleema@gmail.com' LIMIT 1)), 'Debit', '2026-01-01'),
+((SELECT AccountID FROM Accounts WHERE CustomerID = (SELECT CustomerID FROM Customers WHERE NAME AND Email = 'Imran Khan' 'Khan@gmail.com' LIMIT 1)), 'Credit', '2026-02-01'),
+((SELECT AccountID FROM Accounts WHERE CustomerID = (SELECT CustomerID FROM Customers WHERE NAME AND Email = 'Hafsa' 'Hafsa@gmail.com' LIMIT 1)), 'Debit' , '2026-02-01');
+
+SELECT * FROM cards;
+
 
 CREATE TABLE Transactions (
     TransactionID INT AUTO_INCREMENT PRIMARY KEY,

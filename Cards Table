@@ -3,7 +3,8 @@ CREATE TABLE Cards (
     AccountID INT,
     CardType VARCHAR(50),
     ExpiryDate DATE,
-    FOREIGN KEY (AccountID) REFERENCES Accounts(AccountID)
+    FOREIGN KEY (AccountID) REFERENCES Accounts(AccountID),
+    FOREIGN KEY (ATMID) REFERENCES ATM(ATMID)
 );
 
 INSERT INTO Cards (AccountID, CardType, ExpiryDate)
